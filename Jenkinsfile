@@ -4,11 +4,11 @@ pipeline{
     
     environment {
 
-        DOCKERHUB_USERNAME = "vikashashoke" 
+        DOCKERHUB_USERNAME = "sulbiraj" 
         APP_NAME = "gitops-argo-app"  
         IMAGE_TAG="${BUILD_NUMBER}" 
         IMAGE_NAME="${DOCKERHUB_USERNAME}" 
-        REGISTRY CREDS = 'dockerhub' 
+        REGISTRY CREDS = 'docker-cred' 
     
     }
 
@@ -22,8 +22,10 @@ pipeline{
         }
         stage('Checkout SCM') {
             script {
-                git credentialsId : 'github',
-                url : 'https://github.com/vikash-kumar01/gitops_argocd_project.git',
+                git credentialsId : 'github-token',
+                url : 'https://github.com/sulbiraj06/gitops_argocd_project.git',
                 branch : 'master'
             }
         }
+    }
+}
