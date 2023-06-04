@@ -68,7 +68,7 @@ pipeline {
                     sh """
                         git config --global user.name "sulbiraj06"
                         git config --global user.email "sulbiraj@gmail.com"
-                        git add deployment.yml 
+                        git add deployment.yaml 
                         git commit -m "updated the deployment file to ${IMAGE_TAG} by Jenkins"
                     """
                     withCredentials([string(credentialsId: 'github-token', variable: 'github-creds')]) {
