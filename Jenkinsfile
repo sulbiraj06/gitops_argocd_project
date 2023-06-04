@@ -4,7 +4,7 @@ pipeline {
     environment {
         DOCKERHUB_USERNAME = 'sulbiraj'
         APP_NAME = 'gitops-argo-app'
-        IMAGE_TAG = "v.${BUILD_NUMBER}"
+        IMAGE_TAG = "v1.${BUILD_NUMBER}"
         IMAGE_NAME = "${DOCKERHUB_USERNAME}" + "/" + "${APP_NAME}"
         REGISTRY_CREDS = 'docker-cred'
     }
@@ -37,7 +37,7 @@ pipeline {
             steps {
                 script {
                     docker.withRegistry('', REGISTRY_CREDS) {
-                        docker_image.push("v.$BUILD_NUMBER")
+                        docker_image.push("v1.$BUILD_NUMBER")
                         docker_image.push('latest')
                     }
                 }
