@@ -21,10 +21,12 @@ pipeline{
             }
         }
         stage('Checkout SCM') {
-            script {
-                git credentialsId : 'github-token',
-                url : 'https://github.com/sulbiraj06/gitops_argocd_project.git',
-                branch : 'master'
+            steps{
+                script {
+                    git credentialsId : 'github-token',
+                    url : 'https://github.com/sulbiraj06/gitops_argocd_project.git',
+                    branch : 'master'
+                }
             }
         }
     }
