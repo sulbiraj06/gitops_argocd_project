@@ -8,7 +8,7 @@ pipeline{
         APP_NAME = "gitops-argo-app"  
         IMAGE_TAG="${BUILD_NUMBER}" 
         IMAGE_NAME="${DOCKERHUB_USERNAME}" 
-        REGISTRY CREDS = 'docker-cred' 
+        REGISTRY_CREDS = 'docker-cred' 
     
     }
 
