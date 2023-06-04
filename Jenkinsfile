@@ -62,5 +62,20 @@ pipeline {
                 }
             }
         }
+        stage('Push the manifest changes back to GitHub') {
+            steps {
+                script {
+                    sh """
+                        git config --global user.name "sulbiraj06"
+                        git config --global user.email "sulbiraj@gmail.com"
+                        git add deployment.yml 
+                        git commit -m "updated the deployment file to ${IMAGE_TAG} by Jenkins"
+                    """
+                    withCredentials([string(credentialsId: 'github-token', variable: 'github-creds')]) {
+                        sh "git push https://github.com/sulbiraj06/gitops_argocd_project.git master"
+                    }
+                }
+            }
+        }
     }
 }
